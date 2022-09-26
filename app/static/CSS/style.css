@@ -1,0 +1,19 @@
+html,
+body {
+  block-size: 100%;
+}
+
+.col-md-3 {
+  padding: 5px;
+  margin: 10px;
+}
+
+.cantidad {
+  padding: 5px;
+  margin: 10px;
+}
+
+.col-md-4 {
+  padding: 5px;
+  margin: 10px;
+}

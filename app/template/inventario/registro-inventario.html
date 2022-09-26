@@ -1,0 +1,72 @@
+{% extends "./index.html" %}
+{% block titulo %}
+Registrar Repuestos
+{% endblock %}
+{% block contenido %}
+
+<section class="section">
+    <div class="columns">
+        <div class="column is-one-third">
+            <h3 class="is-size-3">Registrar Repuestos</h3>
+            <br>
+            <br>
+            <form action="{{url_for('add_inventario')}}" method="POST" class="row g-3">
+
+                <div class="col-md-4">
+                    <label for="nombre" class="form-label">Nombre</label>
+                    <input type="text" class="form-control" name = "nombre" id="nombre" placeholder="Nombre" required>
+                </div>
+
+                <div class="col-md-3">
+                    <label for="stock_producto" class="form-label">Stock </label>
+                    <input type="number" class="form-control" name = "stock_producto" id="stock_producto" placeholder="stock" required>
+                </div>
+
+                <div class="col-md-3">
+                    <label for="serie" class="form-label">Serie </label>
+                    <input type="text" class="form-control" name = "serie" id="serie" placeholder="Serie" required>
+                    <div class="valid-feedback">
+                        ¡Se ve bien!
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <label for="precio" class="form-label">Precio </label>
+                    <input type="number" class="form-control" name = "precio" id="precio" placeholder="Precio" required>
+                </div>
+
+                <div class="col-md-3">
+                    <label for="pago_adquisicion" class="form-label">Pago por Adquisicion </label>
+                    <input type="number" class="form-control" name = "pago_adquisicion" id="pago_adquisicion" placeholder="Pago de Adquisicion" >
+                </div>
+
+                <div class="col-md-3">
+                    <label for="pago_almacen" class="form-label">Pago por Almacen </label>
+                    <input type="number" class="form-control" name = "pago_almacen" id="pago_almacen" placeholder="Pago de Almacen" >
+                </div>
+
+                <div class="col-md-4">
+                    <label for="categoria" class="form-label">Categoria </label>
+                    <input type="text" class="form-control" name = "categoria" id="categoria" placeholder="Categoria" required>
+                </div>
+
+                <div class="col-md-4">
+                    <label for="proveedor" class="form-label">Proveedor </label>
+                    <input type="text" class="form-control" name = "proveedor" id="proveedor" placeholder="Proveedor" required>
+                </div>
+                <div class="d-grid gap-2 d-md-flex justify-content-md-center">
+                    <button type="submit" class="btn btn-success">Save</button>
+                    <a href="{{url_for('index_inventario')}}" class="btn btn-primary" role="button">Volver</a>
+                </div>
+          </form>
+
+        </div>
+
+    </div>
+
+
+</section>
+
+
+
+{% endblock %}

@@ -1,0 +1,123 @@
+{% extends "./index.html" %}
+
+{% block titulo %}
+Registrar ventas de Repuestos
+{% endblock %}
+{% block contenido %}
+
+
+<section class="section">
+    <div class="columns">
+        <div class="column is-one-third">
+            <h3 class="display-2 text-center">Registrar Ventas</h3>
+             
+             
+            
+            <form id="register-form" action="{{url_for('ingresar_registroventa')}}" method="POST" class="row g-3" novalidate>
+                <br> 
+                
+                
+                <input type="hidden" class="form-control" name="serie" value="{{serie}}"/>
+                <div class="col-md-3">
+                    <label for="cliente" class="form-label" >Cliente </label>
+                    <select class="form-select text-center" name="id_cliente" id="id_cliente" required>
+                        <option  selected>-- Seleccina ID del cliente --</option>
+                        {% for clt_opcion in cliente_ventas %}
+                            <option value="{{clt_opcion[0]}}">{{ clt_opcion[0] }}</option>
+                            
+                        {% endfor %}
+                
+                    </select>     
+                </div>
+              
+                
+               
+
+                <div class="col-md-3">
+                    <label class="form-label">Detalles del producto</label>
+                    
+                    <select class="form-select text-center" name="id_inventario" id="id_inventario" required>
+                        <option selected>-- Seleccina ID del Producto --</option>
+                        {% for inv_opcion in inventario_ventas %}
+                            <option value="{{inv_opcion[0]}}">{{inv_opcion[0]}}</option>
+                                                   
+                        {% endfor %}
+                        
+                    </select>
+                </div>
+                <!---Comienza los detalles de la venta--->
+
+               
+                <div class="row g-3 align-items-center cantidad">
+                    <div class="col-auto">
+                        <label for="cantidad" class="form-label">Cantidad de ventas</label>
+                        <input type="number" class="form-control" name = "cantidad_venta" id="cantidad_venta" placeholder="Cantidad total" required>
+                    </div>
+                </div>
+                 
+                <div class="d-grid gap-2 d-md-flex justify-content-md-center">
+                    <button type="submit" class="btn btn-success">Save</button>
+                    <a href="{{url_for('index_inventario')}}" class="btn btn-primary">Volver al inventario</a>
+                </div>
+          </form>
+
+          
+          
+         
+        </div>
+
+    </div>
+
+ 
+</section>
+
+
+<section class="section">
+    <div class="columns">
+        <div class="column">
+  
+           <br>
+            <br>
+            <h3 class="display-2 text-center">Ventas registradas</h3>
+            <!-----<a href="{{url_for('form_registroventa')}}" class="btn btn-primary">Registrar ventas</a>---->
+            <br>
+            <br>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Cliente</th>
+                        <th>Detalle del producto</th>                       
+                        <th>Cantidad total</th>
+                        <th>Precio total</th>
+                        <th>Editar</th>
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                 {% for registro in ventas %}
+                    <tr>
+                        
+                        <td>{{registro[0]}}</td>
+                        <td>{{registro[1]}}</td>
+                        <td>{{registro[2]}}</td>
+                        <td>{{registro[3]}}</td>
+                        <td>{{registro[4]}}</td>
+                        
+                        <td>
+                            <a href="{{url_for('editar_venta', id = registro[0])}}" class="btn btn-info">Editar</a>
+                        </td>
+                      
+                    </tr>
+                 {% endfor %}
+                
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+
+
+

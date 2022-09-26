@@ -1,0 +1,41 @@
+{% extends "./index.html" %}
+{% block titulo %}
+Reportes - Repuestos
+{% endblock %}
+
+{% block contenido %}
+<section class="section">
+    <div class="columns">
+        <div class="column">
+            <h3 class="display-2 text-center">Reporte Estado de Cuenta Mensual</h3>
+           
+            <br>
+            <br>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Detalles del productos</th>
+                        <th>Saldo</th>
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                 {% for reporte in rep_stCuentaMes %}
+                    <tr>
+                        
+                        <td>{{reporte[0]}}</td>
+                        <td>{{reporte[1]}}</td>
+                        <td>{{reporte[2]}}</td>
+                     
+                    </tr>
+                 {% endfor %}             
+                    
+                </tbody>
+            </table>
+        
+        </div>
+    </div>
+</section>
+
+{% endblock %}
