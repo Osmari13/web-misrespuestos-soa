@@ -6,63 +6,77 @@ Inventario Respuestos
 {% block contenido %}
 
 <section class="section">
-    <div class="columns">
-        <div class="column">
-            <h3 class="display-2 text-center">Inventario</h3>
-            
-            <br>
-            <br>
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Nombre</th>
-                        <th>Precio</th>
-                        <th>Serie</th>
-                        <th>Stock</th>
-                        <th>Adquisicion</th>
-                        <th>Almacen</th>
-                        <th>Categoria</th>
-                        <th>Proveedor</th>
-                        <th>Editar</th>
-                        <th>Eliminar</th>
-                    </tr>
-                </thead>
-                <tbody>
-                 {% for gestion in productos %}
-                    <tr>
-                        
-                        <td>{{gestion[0]}}</td>
-                        <td>{{gestion[1]}}</td>
-                        <td>{{gestion[2]}}</td>
-                        <td>{{gestion[3]}}</td>
-                        <td>{{gestion[4]}}</td>
-                        <td>{{gestion[5]}}</td>
-                        <td>{{gestion[6]}}</td>
-                        <td>{{gestion[7]}}</td>
-                        <td>{{gestion[8]}}</td>
-                        <td>
-                            <a href="{{url_for('editar_inventario', id = gestion[0])}}" class="btn btn-info">Editar</a>
-                        </td>
-                        <td>
-                            <form action="{{url_for('eliminar_inventario')}}" method="POST">
-                                <input type="hidden" name="id" value="{{gestion[0]}}">
-                                <button class="btn btn-dark">Eliminar</button>
-                            </form>
-                            
 
-                        </td>
-                    </tr>
-                 {% endfor %}
-                    
-                </tbody>
-            </table>
-            <div class="d-grid gap-2 d-md-flex justify-content-md-center">
-                <a href="{{url_for('form_inventario')}}" class="btn btn-primary" role="button">Agregar Producto</a>
+    <div class="card position-absolute top-50 start-50 translate-middle rounded-3 shadow p-3 mb-5 bg-body-tertiary rounded"
+        style="width: 100rem;">
+        <div class="card-body">
+            <div class="columns">
+                <div class="column">
+                    <h3 class="display-2 text-center">Inventario</h3>
+
+                    <br>
+                    <br>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Nombre</th>
+                                <th>Precio</th>
+                                <th>Serie</th>
+                                <th>Stock</th>
+                                <th>Adquisicion</th>
+                                <th>Almacen</th>
+                                <th>Categoria</th>
+                                <th>Proveedor</th>
+                                <th>Fecha de creacion</th>
+                                <th>Fecha de modificacion</th>
+                                <th>Editar</th>
+                                <th>Eliminar</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for gestion in productos %}
+                            <tr>
+
+                                <td>{{gestion[0]}}</td>
+                                <td>{{gestion[1]}}</td>
+                                <td>{{gestion[2]}}</td>
+                                <td>{{gestion[3]}}</td>
+                                <td>{{gestion[4]}}</td>
+                                <td>{{gestion[5]}}</td>
+                                <td>{{gestion[6]}}</td>
+                                <td>{{gestion[7]}}</td>
+                                <td>{{gestion[8]}}</td>
+                                <td>{{gestion[9]}}</td>
+                                <td>{{gestion[10]}}</td>
+                                <td>
+                                    <a href="{{url_for('editar_inventario', id = gestion[0])}}"
+                                        class="btn btn-info">Editar</a>
+                                </td>
+                                <td>
+                                    <form action="{{url_for('eliminar_inventario')}}" method="POST">
+                                        <input type="hidden" name="id" value="{{gestion[0]}}">
+                                        <button class="btn btn-dark">Eliminar</button>
+                                    </form>
+
+
+                                </td>
+                            </tr>
+                            {% endfor %}
+
+                        </tbody>
+                    </table>
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-center">
+                        <a href="{{url_for('form_inventario')}}" class="btn btn-primary" role="button">Agregar
+                            Producto</a>
+                    </div>
+
+                </div>
             </div>
-            
         </div>
     </div>
+
+
 </section>
 
 {% endblock %}

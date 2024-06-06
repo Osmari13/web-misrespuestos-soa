@@ -11,35 +11,36 @@ Editar Ventas
             <form action="{{url_for('actualizar_venta')}}" method="post" class="row g-3" novalidate>
 
                 <input type="hidden" name="id" id="id" value="{{venta[0]}}">
-                <br> 
+                <br>
                 <div class="col-md-3">
 
                     <h4><label for="cliente" class="form-label">Cliente </label></h4>
                     <select class="form-select text-center" name="id_cliente" id="id_cliente" required>
-                    <option value="{{venta[1]}}" selected> {{venta[1]}} </option>
-                    {% for clt_opcion in cliente_venta %}
-                        <option value="{{clt_opcion[0]}}">{{ clt_opcion[0] }}</option>
-                    {% endfor %}
-                
-                    </select>  
-                </div>   
-                
+                        <option value="{{venta[7]}}" selected> {{venta[1]}} </option>
+                        {% for clt_opcion in cliente_venta %}
+                        <option value="{{clt_opcion[0]}}">{{ clt_opcion[1] }}</option>
+                        {% endfor %}
+
+                    </select>
+                </div>
+
                 <div class="col-md-3">
                     <h4><label for="cliente" class="form-label">Detalles del producto</label></h4>
 
                     <select class="form-select text-center" name="id_inventario" id="id_inventario">
-                        <option value="{{venta[2]}}" selected> {{venta[2]}} </option>
+                        <option value="{{venta[8]}}" selected> {{venta[2]}} </option>
                         {% for inv_opcion in inventario_venta %}
-                            <option value="{{inv_opcion[0]}}">{{inv_opcion[0]}}</option>
-                            
+                        <option value="{{inv_opcion[0]}}">{{inv_opcion[1]}}</option>
+
                         {% endfor %}
-                        
+
                     </select>
-                </div> 
+                </div>
                 <div class="row g-3 align-items-center cantidad">
                     <div class="col-auto">
                         <label for="cantidad" class="form-label">Cantidad de ventas </label>
-                        <input value="{{venta[3]}}" required  type="number" class="form-control" name = "cantidad_venta" id="cantidad_venta" placeholder="Cantidad total">
+                        <input value="{{venta[3]}}" required type="number" class="form-control" name="cantidad_venta"
+                            id="cantidad_venta" placeholder="Cantidad total">
                     </div>
                 </div>
                 <div class="d-grid gap-2 d-md-flex justify-content-md-center">

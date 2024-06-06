@@ -10,73 +10,75 @@ Registrar ventas de Repuestos
     <div class="columns">
         <div class="column is-one-third">
             <h3 class="display-2 text-center">Registrar Ventas</h3>
-             
-             
-            
-            <form id="register-form" action="{{url_for('ingresar_registroventa')}}" method="POST" class="row g-3" novalidate>
-                <br> 
-                
-                
-                <input type="hidden" class="form-control" name="serie" value="{{serie}}"/>
+
+
+
+            <form id="register-form" action="{{url_for('ingresar_registroventa')}}" method="POST" class="row g-3"
+                novalidate>
+                <br>
+
+
+                <input type="hidden" class="form-control" name="serie" value="{{serie}}" />
                 <div class="col-md-3">
-                    <label for="cliente" class="form-label" >Cliente </label>
+                    <label for="cliente" class="form-label">Cliente </label>
                     <select class="form-select text-center" name="id_cliente" id="id_cliente" required>
-                        <option  selected>-- Seleccina ID del cliente --</option>
+                        <option selected>-- Seleccina ID del cliente --</option>
                         {% for clt_opcion in cliente_ventas %}
-                            <option value="{{clt_opcion[0]}}">{{ clt_opcion[0] }}</option>
-                            
+                        <option value="{{clt_opcion[0]}}">{{ clt_opcion[1] }}</option>
+
                         {% endfor %}
-                
-                    </select>     
+
+                    </select>
                 </div>
-              
-                
-               
+
+
+
 
                 <div class="col-md-3">
                     <label class="form-label">Detalles del producto</label>
-                    
+
                     <select class="form-select text-center" name="id_inventario" id="id_inventario" required>
                         <option selected>-- Seleccina ID del Producto --</option>
                         {% for inv_opcion in inventario_ventas %}
-                            <option value="{{inv_opcion[0]}}">{{inv_opcion[0]}}</option>
-                                                   
+                        <option value="{{inv_opcion[0]}}">{{inv_opcion[1]}}</option>
+
                         {% endfor %}
-                        
+
                     </select>
                 </div>
                 <!---Comienza los detalles de la venta--->
 
-               
+
                 <div class="row g-3 align-items-center cantidad">
                     <div class="col-auto">
-                        <label for="cantidad" class="form-label">Cantidad de ventas</label>
-                        <input type="number" class="form-control" name = "cantidad_venta" id="cantidad_venta" placeholder="Cantidad total" required>
+                        <label for="cantidad" class="form-label">Cantidad</label>
+                        <input type="number" class="form-control" name="cantidad_venta" id="cantidad_venta"
+                            placeholder="Cantidad total" required>
                     </div>
                 </div>
-                 
+
                 <div class="d-grid gap-2 d-md-flex justify-content-md-center">
                     <button type="submit" class="btn btn-success">Save</button>
                     <a href="{{url_for('index_inventario')}}" class="btn btn-primary">Volver al inventario</a>
                 </div>
-          </form>
+            </form>
 
-          
-          
-         
+
+
+
         </div>
 
     </div>
 
- 
+
 </section>
 
 
 <section class="section">
     <div class="columns">
         <div class="column">
-  
-           <br>
+
+            <br>
             <br>
             <h3 class="display-2 text-center">Ventas registradas</h3>
             <!-----<a href="{{url_for('form_registroventa')}}" class="btn btn-primary">Registrar ventas</a>---->
@@ -87,37 +89,80 @@ Registrar ventas de Repuestos
                     <tr>
                         <th>ID</th>
                         <th>Cliente</th>
-                        <th>Detalle del producto</th>                       
+                        <th>Detalle del producto</th>
+                        <th>Precio del producto</th>
                         <th>Cantidad total</th>
                         <th>Precio total</th>
+                        <th>Fecha registro</th>
+                        <th>Fecha modificacion</th>
                         <th>Editar</th>
-                        
+
                     </tr>
                 </thead>
                 <tbody>
-                 {% for registro in ventas %}
+                    {% for registro in ventas %}
                     <tr>
-                        
+
                         <td>{{registro[0]}}</td>
                         <td>{{registro[1]}}</td>
                         <td>{{registro[2]}}</td>
                         <td>{{registro[3]}}</td>
                         <td>{{registro[4]}}</td>
-                        
+                        <td>{{registro[5]}}</td>
+                        <td>{{registro[6]}}</td>
+                        <td>{{registro[7]}}</td>
+
                         <td>
                             <a href="{{url_for('editar_venta', id = registro[0])}}" class="btn btn-info">Editar</a>
                         </td>
-                      
+
                     </tr>
-                 {% endfor %}
-                
+                    {% endfor %}
+
                 </tbody>
             </table>
         </div>
     </div>
 </section>
+
+<section class="section">
+    <div class="columns">
+        <div class="column is-one-third">
+            <h3 class="display-2 text-center">Factura</h3>
+
+
+
+            <form id="register-form" action="{{url_for('generar_factura')}}" method="POST" class="row g-3" novalidate>
+                <br>
+
+
+                <input type="hidden" class="form-control" name="serie" value="{{serie}}" />
+                <div class="col-md-3">
+                    <label for="cliente" class="form-label">Cliente </label>
+                    <select class="form-select text-center" name="id_cliente" id="id_cliente" required>
+                        <option value="" selected>-- Seleccina ID del cliente --</option>
+                        {% for clt_opcion in cliente_ventas %}
+                        <option value="{{clt_opcion[0]}}">{{ clt_opcion[1] }}</option>
+
+                        {% endfor %}
+
+                    </select>
+                </div>
+
+
+                <div class="d-grid gap-2 d-md-flex justify-content-md-center">
+                    <button type="submit" class="btn btn-success">Generar Factura</button>
+                </div>
+            </form>
+
+
+
+
+        </div>
+
+    </div>
+
+
+</section>
+
 {% endblock %}
-
-
-
-
