@@ -212,7 +212,6 @@ def generar_factura():
             total_factura = total_factura * IVA
             return render_template ("registro_venta/factura.html", factura = factura, total_factura = total_factura) 
         else:
-            print('asdasd')
             flash('El cliente no tiene registro de venta', 'time')
             return redirect('/tabla_registroventa') 
     else:
